@@ -1,4 +1,1 @@
-#Homework 4: Using jQuery
-
-
-
+# Homework 4: Using jQuery
