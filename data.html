@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    div {
+      color: blue;
+    }
+    span {
+      color: red;
+    }
+  </style>
+
+</head>
+<body>
+  <div>
+    The values stored were
+    <span></span>
+    and
+    <span></span>
+  </div>
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>   
+  <script>
+    $( "div" ).data( "test", { first: 16, last: "pizza!" } );
+    $( "span:first" ).text( $( "div" ).data( "test" ).first );
+    $( "span:last" ).text( $( "div" ).data( "test" ).last );
+  </script>   
+</body>
+</html>

@@ -1,0 +1,65 @@
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.container {
+  width: 640px;
+  background-color: #aaa;
+  margin: 0 auto;
+}
+#selection-area {
+  background-color: #bbb;
+  text-align: center;
+  height: 120px;
+}
+#arena {
+  background-color: #ccc;
+  height: 400px;
+  padding: 10px;
+}
+
+#player-arena {
+  width: 50%;
+  height: 100%;
+  background-color: #ddd;
+  float: left;
+}
+
+#attack-area {
+  width: 120px;
+  height: 100%;
+  background-color: #aad;
+  float: right;
+}
+
+#computer-arena {
+  width: 50%;
+  height: 100%;
+  background-color: #eee;
+  float: left;
+}
+
+#defense-area {
+  width: 120px;
+  height: 100%;
+  background-color: #aac;
+  float: left;
+}
+#holding-area {
+  width: 120px;
+  height: 100%;
+  background-color: #aab;
+  float: right;
+}
+
+.characters {
+  background-color: red;
+  margin: 10px;
+  width: 100px;
+  height: 100px;
+  display: inline-block;
+}
