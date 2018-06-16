@@ -1,19 +1,31 @@
 
-let stage = 0;
-
+$('#defense-area').data( {isEmpty: true} );
 
 $('#selection-area').on('click', '.characters',function() {
   const player = $(this)
   $('#attack-area').prepend( player );
-
 
   const enemies = $('#selection-area .characters');
   $('#holding-area').prepend( enemies );
 });
 
 $('#holding-area').on('click', '.characters',function() {
-  $('#defense-area').prepend( $(this) );
+  const $defenseArea = $('#defense-area');
+  const data = $defenseArea.data();
+
+  if (data.isEmpty) {
+    $defenseArea.prepend( $(this) );
+    $defenseArea.data( {isEmpty: false} );
+    $('#attack-area').append( $('<button>').text('Attack'));
+  }
+  console.log('holding-area on click');
 });
+
+function removeFigther() {
+  $('#defense-area').data( {isEmpty: true} );
+  $('#defense-area').empty();
+  $('#attack-area button').remove();
+};
 
 // const characters = [
 //   {
