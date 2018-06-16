@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
+
 *,
 *:before,
 *:after {
@@ -14,7 +16,7 @@
 #selection-area {
   background-color: #bbb;
   text-align: center;
-  height: 120px;
+  /* height: 120px; */
 }
 #arena {
   background-color: #ccc;
@@ -57,9 +59,23 @@
 }
 
 .characters {
-  background-color: red;
+  background-color: black;
   margin: 10px;
-  width: 100px;
-  height: 100px;
+  /* width: auto; */
+  height: auto;
+  padding: 2px;
   display: inline-block;
+  /* text-align: center; */
+  color: white;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.image {
+  background-color: blue;
+  display: block;
+  /* margin: 10px; */
+  width: 100px;
+  height: auto;
 }
