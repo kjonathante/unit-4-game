@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Ubuntu');
+@import url('https://fonts.googleapis.com/css?family=Ubuntu|VT323');
 
 *,
 *:before,
@@ -16,23 +16,32 @@
 #selection-area {
   background-color: #bbb;
   text-align: center;
-  /* height: 120px; */
+  height: 191.33px;
 }
+
+#holding-area {
+  background-color: #aab;
+  text-align: center;
+  height: 191.33px;
+}
+
 #arena {
   background-color: #ccc;
-  height: 400px;
+  height: 250px;
   padding: 10px;
 }
 
 #player-arena {
   width: 50%;
   height: 100%;
-  background-color: #ddd;
+  background-color: #000;
   float: left;
+  font-family: 'VT323', monospace;
+  color: #00ff00;
 }
 
 #attack-area {
-  width: 120px;
+  width: 124px;
   height: 100%;
   background-color: #aad;
   float: right;
@@ -46,16 +55,10 @@
 }
 
 #defense-area {
-  width: 120px;
+  width: 124px;
   height: 100%;
   background-color: #aac;
   float: left;
-}
-#holding-area {
-  width: 120px;
-  height: 100%;
-  background-color: #aab;
-  float: right;
 }
 
 .characters {
@@ -68,11 +71,11 @@
   /* text-align: center; */
   color: white;
   font-family: 'Ubuntu', sans-serif;
-  font-size: 1rem;
-  line-height: 1.5rem;
+  font-size: .8rem;
+  line-height: 1.1rem;
 }
 
-.image {
+.sel-area-img {
   background-color: blue;
   display: block;
   /* margin: 10px; */

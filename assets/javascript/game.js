@@ -1,6 +1,64 @@
+const themes = {
+	"characters": [
+    {
+      "name": "Lloyd",
+      "src": "assets/images/x_Lloyd.jpeg",
+      "hp": 20,
+      "attackPower": 6,
+      "counterAttackPower": 7
+    },
+    {
+      "name": "Nya",
+      "src": "assets/images/x_Nya.jpeg",
+      "hp": 20,
+      "attackPower": 6,
+      "counterAttackPower": 7
+    },
+    {
+      "name": "Zane",
+      "src": "assets/images/x_Zane.jpeg",
+      "hp": 20,
+      "attackPower": 6,
+      "counterAttackPower": 7
+    },
+    {
+      "name": "Lord Garmadon",
+      "src": "assets/images/x_Lord_Garmadon.jpeg",
+      "hp": 20,
+      "attackPower": 6,
+      "counterAttackPower": 7
+    }
+  ]
+};
 
 $('#defense-area').data( {isEmpty: true} );
 
+/*
+<div class="characters" id="character0">
+<img class="image" src="assets/images/x_Lloyd.jpeg" alt="Lloyd">
+<!-- <div class="image"></div> -->
+<p>Lloyd</p>
+<p>❤️ <span>20</span></p>
+</div>
+*/
+let $div;
+let $span;
+$.each( themes.characters, function(key, val) {
+  //console.log( val );
+  $div = $('<div>');
+  $div.attr('id', 'character'+key).addClass('characters');
+  
+  $span = $('<span>');
+  $span.attr('id', 'hp').text( val.hp );
+
+  $div.append( $('<img>').addClass('sel-area-img').attr('src', val.src).attr('alt', val.name) );
+  $div.append( $('<p>').text(val.name));
+  $div.append( $('<p>').html('❤️ ').append( $span ));
+
+  $('#selection-area').append( $div );
+});
+
+// player character selection
 $('#selection-area').on('click', '.characters',function() {
   const player = $(this)
   $('#attack-area').prepend( player );
