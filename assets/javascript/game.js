@@ -11,22 +11,22 @@ const themes = {
       "name": "Nya",
       "src": "assets/images/x_Nya.jpeg",
       "hp": 20,
-      "attackPower": 6,
-      "counterAttackPower": 7
+      "attackPower": 7,
+      "counterAttackPower": 5
     },
     {
       "name": "Zane",
       "src": "assets/images/x_Zane.jpeg",
       "hp": 20,
-      "attackPower": 6,
-      "counterAttackPower": 7
+      "attackPower": 8,
+      "counterAttackPower": 6
     },
     {
       "name": "Lord Garmadon",
       "src": "assets/images/x_Lord_Garmadon.jpeg",
       "hp": 20,
-      "attackPower": 6,
-      "counterAttackPower": 7
+      "attackPower": 5,
+      "counterAttackPower": 9
     }
   ]
 };
@@ -44,7 +44,6 @@ $('#defense-area').data( {isEmpty: true} );
 let $div;
 let $span;
 $.each( themes.characters, function(key, val) {
-  //console.log( val );
   $div = $('<div>');
   $div.attr('id', 'character'+key).addClass('characters');
   
@@ -53,7 +52,14 @@ $.each( themes.characters, function(key, val) {
 
   $div.append( $('<img>').addClass('sel-area-img').attr('src', val.src).attr('alt', val.name) );
   $div.append( $('<p>').text(val.name));
-  $div.append( $('<p>').html('❤️ ').append( $span ));
+  $div.append( $('<p>').text('❤️ ').append( $span ));
+
+  $div.data({
+    hp: val.hp,
+    ap: val.attackPower,
+    cp: val.counterAttackPower,
+    aap: 0
+  });
 
   $('#selection-area').append( $div );
 });
