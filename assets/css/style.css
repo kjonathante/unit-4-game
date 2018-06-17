@@ -28,20 +28,31 @@
 #arena {
   background-color: #ccc;
   height: 250px;
-  padding: 10px;
+  /* padding: 10px; */
 }
 
 #player-arena {
   width: 50%;
   height: 100%;
+  background-color: #ddd;
+  float: left;
+}
+
+#message-area {
+  /* width: 186px; */
+  width: 60%;
+  height: 100%;
   background-color: #000;
   float: left;
+
+  padding: 5px;
   font-family: 'VT323', monospace;
   color: #00ff00;
 }
 
 #attack-area {
-  width: 124px;
+  /* width: 124px; */
+  width: 40%;
   height: 100%;
   background-color: #aad;
   float: right;

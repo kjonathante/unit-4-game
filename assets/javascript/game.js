@@ -55,10 +55,11 @@ $.each( themes.characters, function(key, val) {
   $div.append( $('<p>').text('❤️ ').append( $span ));
 
   $div.data({
+    name: val.name,
     hp: val.hp,
     ap: val.attackPower,
     cp: val.counterAttackPower,
-    aap: 0
+    aap: val.attackPower
   });
 
   $('#selection-area').append( $div );
@@ -73,20 +74,60 @@ $('#selection-area').on('click', '.characters',function() {
   $('#holding-area').prepend( enemies );
 });
 
+// enemy selection
 $('#holding-area').on('click', '.characters',function() {
   const $defenseArea = $('#defense-area');
   const data = $defenseArea.data();
 
   if (data.isEmpty) {
     $defenseArea.prepend( $(this) );
-    $defenseArea.data( {isEmpty: false} );
+    $defenseArea.data().isEmpty = false; // {isEmpty: false} );
     $('#attack-area').append( $('<button>').text('Attack'));
+
+    $('#message-area').empty();
   }
   console.log('holding-area on click');
 });
 
+// attack
+$('#attack-area').on('click', 'button', function() {
+  const player = $('#attack-area div').data();
+  const enemy = $('#defense-area div').data();
+
+  const enemyDamage = player.aap;
+
+  // attack
+  enemy.hp -= enemyDamage;
+  $('#defense-area #hp').text(enemy.hp);
+  let msg1 = `You attacked ${enemy.name} for ${enemyDamage} damage.`;
+
+  // increment player attack power 
+  player.aap += player.ap;
+
+//     if (enemy.healthPoints > 0) {
+  let msg2;
+  if (enemy.hp > 0) {
+    //counter attack
+    player.hp -= enemy.ap;
+    $('#attack-area #hp').text(player.hp);
+    msg2 = `${enemy.name} attacked you back for ${enemy.ap} damage.`;
+  } else {
+    removeFigther();
+    if ( $('#holding-area .characters').length == 0 ) {
+      msg1 = `You Won!!! Game Over!!!`;
+    } else {
+      msg1 = `You have defeated ${enemy.name}. You can choose to fight another enemy.`;
+    }
+  }
+
+  const $p1 = $('<p>').text(msg1);
+  const $p2 = $('<p>').text(msg2);
+  $('#message-area').empty().append($p1).append($p2);
+  
+});
+
 function removeFigther() {
-  $('#defense-area').data( {isEmpty: true} );
+  $('#defense-area').data().isEmpty = true; // {isEmpty: true} );
   $('#defense-area').empty();
   $('#attack-area button').remove();
 };
@@ -160,4 +201,4 @@ function removeFigther() {
 // //   $.each( char, (key, value) => {
 // //     console.log( `${key}: ${value}` );
 // //   });
-// // });
+// });
