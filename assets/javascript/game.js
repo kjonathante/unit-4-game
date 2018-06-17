@@ -12,7 +12,7 @@ const themes = {
       "src": "assets/images/x_Nya.jpeg",
       "hp": 20,
       "attackPower": 7,
-      "counterAttackPower": 5
+      "counterAttackPower": 50
     },
     {
       "name": "Zane",
@@ -108,7 +108,7 @@ $('#attack-area').on('click', 'button', function() {
   let msg2;
   if (enemy.hp > 0) {
     //counter attack
-    player.hp -= enemy.ap;
+    player.hp -= enemy.cp;
     $('#attack-area #hp').text(player.hp);
     msg2 = `${enemy.name} attacked you back for ${enemy.ap} damage.`;
   } else {
@@ -118,6 +118,11 @@ $('#attack-area').on('click', 'button', function() {
     } else {
       msg1 = `You have defeated ${enemy.name}. You can choose to fight another enemy.`;
     }
+  }
+//   if (player.healthPoints < 1) {
+  if (player.hp < 1) {
+    msg1 = "You been defeated. Game Over!!!";
+    msg2 = undefined;
   }
 
   const $p1 = $('<p>').text(msg1);
