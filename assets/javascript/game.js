@@ -63,6 +63,10 @@ function initialize() {
     $('#selection-area').append( $div );
   });
   $('#defense-area').data( {isEmpty: true} );
+  $('#message-area').empty();
+  $('#holding-area').empty();
+  $('#attack-area').empty();
+  $('#defense-area').empty();
 }
 
 // player character selection
@@ -86,27 +90,27 @@ $('#holding-area').on('click', '.characters',function() {
 
     $('#message-area').empty();
   }
-  console.log('holding-area on click');
 });
 
 // attack
 $('#attack-area').on('click', 'button', function() {
+  let msg1, msg2, restart; // msg1 and msg2 are <p>, restart is <button>
+
+  // get data() object from element
   const player = $('#attack-area div').data();
   const enemy = $('#defense-area div').data();
-
+  // get player accumulated attack power
   const enemyDamage = player.aap;
 
   // attack
   enemy.hp -= enemyDamage;
   $('#defense-area #hp').text(enemy.hp);
-  let msg1 = `You attacked ${enemy.name} for ${enemyDamage} damage.`;
+  msg1 = `You attacked ${enemy.name} for ${enemyDamage} damage.`;
 
   // increment player attack power 
   player.aap += player.ap;
 
-//     if (enemy.healthPoints > 0) {
-  let msg2;
-  if (enemy.hp > 0) {
+  if (enemy.hp > 0) { // check enemy's hp
     //counter attack
     player.hp -= enemy.cp;
     $('#attack-area #hp').text(player.hp);
@@ -114,24 +118,31 @@ $('#attack-area').on('click', 'button', function() {
   } else {
     removeFigther();
     if ( $('#holding-area .characters').length == 0 ) {
-      msg1 = `You Won!!! Game Over!!!`;
+      msg1 = 'You Won!!! Game Over!!!';
+      restart = 'Restart';
     } else {
       msg1 = `You have defeated ${enemy.name}. You can choose to fight another enemy.`;
     }
   }
-//   if (player.healthPoints < 1) {
+
+  // check if player survives
   if (player.hp < 1) {
     msg1 = "You been defeated. Game Over!!!";
-    msg2 = undefined;
+    msg2 = ""; // remove msg from counter attack
+    restart = 'Restart';
     $('#attack-area button').remove();
   }
 
-  const $p1 = $('<p>').text(msg1);
-  const $p2 = $('<p>').text(msg2);
-  $('#message-area').empty().append($p1).append($p2);
+  $messageArea = $('#message-area').empty().append( $('<p>').text(msg1) );
+  if (msg2) $messageArea.append( $('<p>').text(msg2) );
+  if (restart) $messageArea.append( $('<button>').text(restart).attr('id','restart-btn') );
   
 });
 
+// restart 
+$('#message-area').on('click', 'button', function(){
+  initialize();
+});
 function removeFigther() {
   $('#defense-area').data().isEmpty = true; // {isEmpty: true} );
   $('#defense-area').empty();
