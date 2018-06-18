@@ -123,6 +123,7 @@ $('#attack-area').on('click', 'button', function() {
   if (player.hp < 1) {
     msg1 = "You been defeated. Game Over!!!";
     msg2 = undefined;
+    $('#attack-area button').remove();
   }
 
   const $p1 = $('<p>').text(msg1);
