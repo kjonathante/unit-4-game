@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Ubuntu|VT323');
+@import url('https://fonts.googleapis.com/css?family=Ubuntu|VT323|Kaushan+Script');
 
 *,
 *:before,
@@ -10,40 +10,70 @@
 
 .container {
   width: 640px;
-  background-color: #aaa;
+  /* background-color: #aaa; */
+  background-color: rgba(240, 140, 9, 0.555);
   margin: 0 auto;
-}
-#selection-area {
-  background-color: #bbb;
   text-align: center;
-  height: 191.33px;
+  padding: 0 10px 10px 10px;
+}
+
+#title-area {
+  margin-top: 50px;
+  font-family: 'Kaushan Script', cursive;
+  font-size: 3rem;
+  line-height: 4rem;
+  /* text-align: center; */
+  padding: 10px;
+}
+
+#selection-area {
+  /* background-color: #bbb; */
+  /* text-align: center; */
+  /* height: 191.33px; */
 }
 
 #holding-area {
-  background-color: #aab;
-  text-align: center;
-  height: 191.33px;
+  /* background-color: #aab; */
+  /* text-align: center; */
+  /* height: 191.33px; */
 }
 
 #arena {
-  background-color: #ccc;
+  /* background-color: #ccc; */
+  background-color: rgba(240, 140, 9, 0.7);
   height: 250px;
-  /* padding: 10px; */
+  padding: 10px 0 10px 0;
 }
 
 #player-arena {
-  width: 50%;
+  width: 40%;
   height: 100%;
-  background-color: #ddd;
+  /* background-color: #dda; */
+  float: left;
+}
+
+#vs {
+  width: 20%;
+  height: 100%;
+  /* background-color: #ddb; */
+  float: left;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 2rem;
+  line-height: 230px;
+}
+
+#computer-arena {
+  width: 40%;
+  height: 100%;
+  /* background-color: #ddc; */
   float: left;
 }
 
 #message-area {
-  /* width: 186px; */
-  width: 60%;
-  height: 100%;
+
+  width: 100%;
+
   background-color: #000;
-  float: left;
 
   padding: 5px;
   font-family: 'VT323', monospace;
@@ -51,24 +81,19 @@
 }
 
 #attack-area {
-  /* width: 124px; */
-  width: 40%;
+  width: 134px;
   height: 100%;
-  background-color: #aad;
+  background-color: rgba(170, 170, 221, 0.781);
+  border: grey solid 5px;
   float: right;
 }
 
-#computer-arena {
-  width: 50%;
-  height: 100%;
-  background-color: #eee;
-  float: left;
-}
 
 #defense-area {
-  width: 124px;
+  width: 134px;
   height: 100%;
-  background-color: #aac;
+  background-color: rgba(170, 170, 221, 0.781);
+  border: grey solid 5px;
   float: left;
 }
 
