@@ -1,25 +1,17 @@
 # Homework 4: Using jQuery
 
-Features:
-Javascript
-  1. JSON - to create a pluggable theme.
-
-jQuery:
-  1. .data method
-  2. .each function
-
-Utilizing JSON and the jQuery .data() method.
-
+Utilizing jQuery .data() method and .each function.
+Also use JSON to create a pluggable theme.
 
 Example of using .data method 
 ```javascript
 $('.characterDiv').data({
-      name: val.name,
-      hp: val.hp,
-      ap: val.attackPower,
-      cp: val.counterAttackPower,
-      aap: val.attackPower
-    });
+  name: val.name,
+  hp: val.hp,
+  ap: val.attackPower,
+  cp: val.counterAttackPower,
+  aap: val.attackPower
+});
 ```
 
 Example of .each function
