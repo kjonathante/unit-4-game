@@ -1,49 +1,92 @@
-const themes = {
-	"characters": [
-    {
-      "name": "Lloyd",
-      "src": "assets/images/x_Lloyd.jpeg",
-      "hp": 20,
-      "attackPower": 6,
-      "counterAttackPower": 7
-    },
-    {
-      "name": "Nya",
-      "src": "assets/images/x_Nya.jpeg",
-      "hp": 20,
-      "attackPower": 7,
-      "counterAttackPower": 50
-    },
-    {
-      "name": "Zane",
-      "src": "assets/images/x_Zane.jpeg",
-      "hp": 20,
-      "attackPower": 8,
-      "counterAttackPower": 6
-    },
-    {
-      "name": "Lord Garmadon",
-      "src": "assets/images/x_Lord_Garmadon.jpeg",
-      "hp": 20,
-      "attackPower": 5,
-      "counterAttackPower": 9
-    }
-  ],
-  "background": "assets/images/Ninjago.png",
-  "title": "Ninjago RPG"
-};
+// an array of objects in JSON format 
+// pluggable themes
+const themes = [
+  {
+    "background": "assets/images/Ninjago.png",
+    "title": "Ninjago RPG",
+    "characters": [
+      {
+        "name": "Lloyd",
+        "src": "assets/images/x_Lloyd.jpeg",
+        "hp": 20,
+        "attackPower": 6,
+        "counterAttackPower": 7
+      },
+      {
+        "name": "Nya",
+        "src": "assets/images/x_Nya.jpeg",
+        "hp": 20,
+        "attackPower": 7,
+        "counterAttackPower": 50
+      },
+      {
+        "name": "Zane",
+        "src": "assets/images/x_Zane.jpeg",
+        "hp": 20,
+        "attackPower": 8,
+        "counterAttackPower": 6
+      },
+      {
+        "name": "Lord Garmadon",
+        "src": "assets/images/x_Lord_Garmadon.jpeg",
+        "hp": 20,
+        "attackPower": 5,
+        "counterAttackPower": 9
+      }
+    ]
+  }
+  // another theme
+  // ,{
+  //   "background": "assets/images/Ninjago.png",
+  //   "title": "Ninjago RPG",
+  //   "characters": [
+  //     {
+  //       "name": "Lloyd",
+  //       "src": "assets/images/x_Lloyd.jpeg",
+  //       "hp": 20,
+  //       "attackPower": 6,
+  //       "counterAttackPower": 7
+  //     },
+  //     {
+  //       "name": "Nya",
+  //       "src": "assets/images/x_Nya.jpeg",
+  //       "hp": 20,
+  //       "attackPower": 7,
+  //       "counterAttackPower": 50
+  //     },
+  //     {
+  //       "name": "Zane",
+  //       "src": "assets/images/x_Zane.jpeg",
+  //       "hp": 20,
+  //       "attackPower": 8,
+  //       "counterAttackPower": 6
+  //     },
+  //     {
+  //       "name": "Lord Garmadon",
+  //       "src": "assets/images/x_Lord_Garmadon.jpeg",
+  //       "hp": 20,
+  //       "attackPower": 5,
+  //       "counterAttackPower": 9
+  //     }
+  //   ]
+  // }  
+];
 
-$('#title-area').html(`<h1>${themes.title}</h1>`);
-$('body').css('background-image', `url(${themes.background})`);
+$('#title-area').html(`<h1>${themes[0].title}</h1>`);
+$('body').css('background-image', `url(${themes[0].background})`);
 
 initialize();
 
+// Initialize game - reads the json object 
+//   and empty() some of the divs 
+//   and initializes some divs with the jQuery .data method
 function initialize() {
   let $div;
   let $span;
-  $.each( themes.characters, function(key, val) {
+  $.each( themes[0].characters, function(key, val) {
     $div = $('<div>');
-    $div.attr('id', 'character'+key).addClass('characters');
+    //$div.attr('id', 'character'+key).addClass('characters');
+    $div.addClass('characters');
     
     $span = $('<span>');
     $span.attr('id', 'hp').text( val.hp );
@@ -70,15 +113,18 @@ function initialize() {
 }
 
 // player character selection
+// a character is selected from the selection area
+// automatically move the rest of the characters to the  enemy's holding area
 $('#selection-area').on('click', '.characters',function() {
-  const player = $(this)
-  $('#attack-area').prepend( player );
+  const $player = $(this)
+  $('#attack-area').prepend( $player );
 
-  const enemies = $('#selection-area .characters');
-  $('#holding-area').prepend( enemies );
+  const $enemies = $('#selection-area .characters');
+  $('#holding-area').prepend( $enemies );
 });
 
 // enemy selection
+// a character is selected to the defense area
 $('#holding-area').on('click', '.characters',function() {
   const $defenseArea = $('#defense-area');
   const data = $defenseArea.data();
@@ -92,7 +138,7 @@ $('#holding-area').on('click', '.characters',function() {
   }
 });
 
-// attack
+// attack button is click
 $('#attack-area').on('click', 'button', function() {
   let msg1, msg2, restart; // msg1 and msg2 are <p>, restart is <button>
 
@@ -143,6 +189,7 @@ $('#attack-area').on('click', 'button', function() {
 $('#message-area').on('click', 'button', function(){
   initialize();
 });
+
 function removeFigther() {
   $('#defense-area').data().isEmpty = true; // {isEmpty: true} );
   $('#defense-area').empty();
